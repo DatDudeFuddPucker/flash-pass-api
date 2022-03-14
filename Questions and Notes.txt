@@ -37,3 +37,11 @@ Questions:
                     * Username duplication
                     * password strength
                     * Is the email a valid email that contains the "@" symbol and a ".com"
+
+4. Notes on "User.java" - lines "18-30"
+        - Use of Polymorphism - Overloading
+            * Right now we have two methods with the same name. (overloadingExample)
+            * However they each have their own sort of "implementations".
+            * This is a form of Polymorphism known as "Overloading".
+            * Within a class we can provide different ways of doing something.
+                * But we have to change the arguments in one way or another.
