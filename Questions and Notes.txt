@@ -1,0 +1,39 @@
+Questions:
+
+1. Question - Whats the difference between a "boolean" and an "if then" statement?
+    Answer -
+        Boolean itself is just a primitive value to store "true and false"
+            So "boolean b = true"
+
+            vs.
+
+            if(b){ (since we set "boolean b = true" we are saying "if(b) = if(true)" then run "this block")
+                // this block
+            } else { ("if(false)" or not "if(b) = if(true)" then run "or this block".
+                // or this block
+            }
+
+
+
+            - An "if" statement is a conditional that allows us to do either this or that.
+            - A boolean is just a data representation of either true or false.
+
+2. Question -  We created two different users. That part works. Now that we have done that, we hit option 2.
+               When we hit option 2, we get "[model.java.User@55f96302, model.java.User@3d4eac69]"
+               Instead of getting the users, usernames and passwords, we get the above line of text in the ""s.
+               Why are the elements themselves not printing?
+    Answer - What wer are getting at the moment is the "HashCode". The reason this is being returned is because we are
+             using the "object classes" implementation of "toString". In order to fix this we should create a new
+             implementation of "toString" for the user.
+
+3. Question - How do we avoid duplicate "usernames"?
+    Answer - Currently there is no "check" in place in the application to ensure that duplicate "usernames" are not being
+             used. When we get to this topic later in the course:
+             Essentially: Input Validation (theme under which this solution exists)
+                - We will have to start "iterating" through the list and checking each username and if the one
+                we are trying to add already exists, tell the "user" as such and prompt them to pick a different
+                "username".
+                Through "input validation" we can check for a lot of things:
+                    * Username duplication
+                    * password strength
+                    * Is the email a valid email that contains the "@" symbol and a ".com"
