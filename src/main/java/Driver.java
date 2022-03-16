@@ -1,46 +1,139 @@
 import model.java.User;
 
-import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
+
 
 public class Driver {
+
+
     public static void main(String[] args) {
-       Scanner scanner = new Scanner(System.in);
-       List<User> users =  new ArrayList<>();
+        User user = new User();
 
-       System.out.println("Welcome to Flash Pass!");
-       while(true) {
-           System.out.println("What would you like to do?");
-           System.out.println("1) Register");
-           System.out.println("2) Login");
-           System.out.println("0) Exit");
 
-           String userInput = scanner.nextLine();
-           int x = 5;
+       ArrayList<User> users = new ArrayList();
 
-            switch(userInput) {
+       Boolean programRunning = true;
+       System.out.print("Welcome. ");
+       User currentUser = new User();
+       Scanner getInput = new Scanner(System.in);
+
+       while(programRunning) {
+           System.out.println("Please select an option below:");
+           System.out.println("1) Register\n" + "2) Login\n" + "3) Logout\n" + "4) Who is logged in?\n" + "0) Exit");
+           String decision = getInput.nextLine();
+           switch (decision) {
                 case "1":
-                    System.out.println("Enter your Username.");
-                    String username = scanner.nextLine();
-                    System.out.println("Enter your Password.");
-                    String password = scanner.nextLine();
-                    System.out.println("Printing case 1");
+                    boolean userTaken = false;
+                    String username = "";
+                    String password = "";
+                    System.out.println("Please enter your username.");
+                    username = getInput.nextLine();
+                    for (User aUser : users) {
+                        if (!userTaken && aUser.getUsername().equals(username)) {
+                            System.out.println("This username is taken. Returning to menu...");
+                            userTaken = true;
+                        }
+                    }
 
-                    User user = new User();
-                    user.username = username;
-                    user.password = password;
-                    users.add(user);
-                case "2":
-                    System.out.println("User Information:");
-                    System.out.println(users);
+                    if (!userTaken)
+                    {
+                        // Assign Registration info
+                        System.out.println("Please enter your password");
+                        password = getInput.nextLine();
+
+                        User newUser = new User(username, password);
+
+                        // Add our user to our list of Users
+                        users.add(newUser);
+
+                        // Confirm registration is complete
+                        System.out.println("Registration is Complete!");
+                    }
                     break;
+
+
+               case "2":
+                    boolean loginSuccess = false;
+                    System.out.println("Please enter your username");
+                    username = getInput.nextLine();
+                    System.out.println("Please enter your password");
+                    password = getInput.nextLine();
+
+                    for (User aUser : users)
+                    {
+                        System.out.println(aUser);
+                        if (aUser.getUsername().equals(username) && aUser.getPassword().equals(password))
+                        {
+                            currentUser = aUser;
+                            loginSuccess = true;
+                            break;
+                        }
+                    }
+
+                    if (!loginSuccess)
+                    {
+                        System.out.println("Your login information is incorrect.");
+                    }
+                    else
+                    {
+                        System.out.println("Welcome, " + currentUser.getUsername());
+                    }
+                    break;
+
+                case "3":
+                    // To Log out a user.
+                    boolean loggedIn = false;
+                    System.out.println("Please enter your Username.");
+                    username = getInput.nextLine();
+                    for (User aUser : users)
+                    {
+                        System.out.println(aUser);
+                        if (aUser.getUsername().equals(username))
+                        {
+                            currentUser = aUser;
+                            loggedIn = true;
+                            break;
+                        }
+                    }
+                    if(!loggedIn)
+                    {
+                        System.out.println("That Username is not logged in.");
+                    }
+                    else
+                    {
+                        System.out.println("Would you like to be logged out?");
+                        System.out.println("1.) Yes\n" + "2.) No\n");
+                        String decision2 = getInput.nextLine();
+                        switch(decision2) {
+                            case "1":
+                                loggedIn = 
+                                break;
+                        }
+                    }
+//                    System.out.println("Would you like to be logged out?");
+//                    System.out.println("1.) Yes\n" + "2.) No\n");
+//                    String decision = getInput.nextLine();
+//                    switch(decision) {
+//                        case "1":
+//
+//
+//                    }
+
+                case "4":
+                    // To do: print who is currently logged in
+                    System.out.println(currentUser);
+                    break;
+
                 case "0":
-                    System.out.println("Exiting the App");
-                    System.exit(1);
-                    break;
+                   System.out.println("You have been logged out. \nGoodbye!");
+                   programRunning = false;
+                   System.exit(1); // Exit Code 1
+                   break;
+
                 default:
-                    System.out.println("Please only choose from the available menu options.");
+                   System.out.println("Not an option. Please entier a valid number.");
+
             }
         }
     }

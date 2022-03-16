@@ -45,3 +45,90 @@ Questions:
             * This is a form of Polymorphism known as "Overloading".
             * Within a class we can provide different ways of doing something.
                 * But we have to change the arguments in one way or another.
+                * As long as the data types are different, based on the location of the arguments
+                * you are going to be just fine.
+
+5. Notes on Polymorphism : Overloading
+//--------------------------------------Polymorphism : Overloading Example-----------------------------------------//
+//--------------------------------------Polymorphism : Overloading Example-----------------------------------------//
+    // Example of use of Polymorphism: Overloading
+    public void overloadingExample(){
+        System.out.println("Hello");
+    }
+
+    public void overloadingExample(String input){
+        System.out.println(input);
+    }
+
+    public void overloadingExample(int input){
+        System.out.println(input);
+    }
+
+    public void overloadingExample(String name, String location){
+        System.out.println(name);
+        System.out.println(location);
+    }
+//--------------------------------------Polymorphism : Overloading Example-----------------------------------------//
+//--------------------------------------Polymorphism : Overloading Example-----------------------------------------//
+
+6. How do you decide which access-modifier you need? Do you just play it safe? Or do you just go with "...."?
+    - Most of the time when we are building models, which are classes specifically designed to just model data
+      we are going to have private member variables with public methods that are what we call getters and setters
+      because we need some sort of way from the outside world to interact with the private variables.
+    - How do we do that?
+        - We give someone a method which which they can pass in an argument to maybe change the data, but then this
+        class, the one that's actually doing the change, you will see that here soon.
+        - But most of the time you are going to adhere to that structure.
+        - That is in part what is called a "Java Bean". (We will get into this later.)
+        - For other classes we almost always toggle between either "public" or "private."
+        - Very rarely will we use "default" because why?
+            - If anything "protected" will be used in some cases, if we know there is going ot be some level of
+            inheritance.
+        - Most of the time we will just be using "public" and "private".
+    - If we need someone to be able to call on this method from the outside we will use "public".
+    - If, it's just a "helper" method, meaning no one is ever going to need to call this method directly we will use
+      it internally in this class to perform some sort of extraneous operation that is repetitive that I do not want
+      to keep writing out. We will then make it private. This way only we can use it, and then I give the outside
+      world a public entry point through other public methods.
+    - This starts to get into abstraction a little bit when we talk about how not everyone needs to know all of the
+      implementation details, you can make those private.
+    - It is very easy to determine whether or not a method should be "public" or "private".
+    - Only in very special circumstances, should we need to use "protected" or "default". Just remember that "default"
+      is default by "default".
+
+7. //----------------------------------------------Getters and Setters-------------------------------------------------//
+   //----------------------------------------------Getters and Setters-------------------------------------------------//
+ // This is another method "getter" for the "password value"
+    public String getPassword(){ // Industry standard to be naming your "getters and setters" in this way.
+        return this.password;
+    }
+
+    // This is another method "setter" for the "password value"
+    public void setPassword(String password) { // Industry standard to be naming your "getters and setters" in this way.
+        this.username = password;
+    }
+
+
+   - Industry standard to be naming your "getters and setters" in this way. Because when we start to use other frameworks,
+   these frameworks rely incredibly on abstraction meaning that you don't know really at all what they are doing, but they
+   expect you to be doing things in a certain way. (THIS IS ONE OF THOSE THINGS THEY EXPECT DONE IN A CERTAIN WAY!!!)
+   - Some of these frameworks will rely on you to have these "getters" and "setters" with private variables, for them to
+   actually operate.
+   - So get used to creating my models in this way.
+   - Where they have private state with public access rights.
+   - Constructors need to be made "public" because otherwise how would one call them?
+   - There would be no way to call the constructor from the outside world if the method was private.
+
+
+   - Most of our methods are going to be public, and most if not all of our states will be private.
+
+   - The variable type of the "getters and setters" will always be matching the data type of the variable that I am
+   protecting, that I am encapsulating.
+
+    //----------------------------------------------Getters and Setters-------------------------------------------------//
+    //----------------------------------------------Getters and Setters-------------------------------------------------//
+
+ 8. Remember : Paranthese denote that you are calling a method. (in relation to "password" variable in "driver.java"
+        - If I do not have the "()" then the application code will think that you are just talking about the variable as
+        if there was a get password variable on that class.
+        - By adding the "()" we are invoking the "get password method" to get that password.
