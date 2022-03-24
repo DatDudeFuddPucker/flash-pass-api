@@ -132,3 +132,36 @@ Questions:
         - If I do not have the "()" then the application code will think that you are just talking about the variable as
         if there was a get password variable on that class.
         - By adding the "()" we are invoking the "get password method" to get that password.
+
+
+
+//----------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------Day 17 Recording Code Along Questions-------------------------------------------//
+//----------------------------------------------------------------------------------------------------------------------//
+
+1. What is the problem with "Java Memory" and storing these users in application memory?
+    - The memory storage is temporary. As soon as the application is shut down, all the objects created get the reference
+    to be garbage collected amd they go away.
+
+    - This recording will show us how to refine this and instead of having a list of users here we are going to use a
+    database table to hold all of our users.
+    - Thi means that when we actually register users, instead of just adding it to a user list, we will have some sort
+    of method here that creates it in a database and then, when they log in and we return to a user, we can query the
+    database and determine that when the credentials to log in are accurate, it will return that user object after we
+    built it from the data we get from sql.
+
+
+2. Menu Layer - Our UI (user interface) or some sort of presentation to the user.
+   UserService - This is our business layer, which are our user services. We are going to have a flash card service.
+        The business layer is where you handle the builk of the business logic, whic is all of these methods, all
+        of these operations, a lot of the code you are going to write that crunches data and stuff like that. This is
+        going to be in the service layer or the business layer. Those are essentially the same layer basically.
+   Persistence Layer - This is going to be all of our classes that handle strictly persisting stuff to the database.
+
+   All these layers are intertwined and feed stuff to one another.
+   We keep these layers seperate to help keep the code clean, organized and easy to read as a programmer and for other
+   programmers that help us in the development of the application. It makes it easier to maintain over time.
+
+
+
+

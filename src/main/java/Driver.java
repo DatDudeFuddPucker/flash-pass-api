@@ -88,7 +88,7 @@ public class Driver {
                     username = getInput.nextLine();
                     for (User aUser : users)
                     {
-                        System.out.println(aUser);
+                        // System.out.println(aUser); - This is not needed, this unecessarilly display the logged in users.
                         if (aUser.getUsername().equals(username))
                         {
                             currentUser = aUser;
@@ -107,18 +107,12 @@ public class Driver {
                         String decision2 = getInput.nextLine();
                         switch(decision2) {
                             case "1":
-                                loggedIn = 
+                                // loggedIn = true;
                                 break;
+
                         }
                     }
-//                    System.out.println("Would you like to be logged out?");
-//                    System.out.println("1.) Yes\n" + "2.) No\n");
-//                    String decision = getInput.nextLine();
-//                    switch(decision) {
-//                        case "1":
-//
-//
-//                    }
+
 
                 case "4":
                     // To do: print who is currently logged in
@@ -132,7 +126,7 @@ public class Driver {
                    break;
 
                 default:
-                   System.out.println("Not an option. Please entier a valid number.");
+                   System.out.println("Not an option. Please enter a valid number.");
 
             }
         }
